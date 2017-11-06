@@ -8,14 +8,12 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'vim-scripts/vim-auto-save'
-"Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'wincent/ferret'
-"Plugin 'davidhalter/jedi-vim'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-fugitive'
 Plugin 'nathanielc/vim-tickscript'
@@ -24,6 +22,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-rhubarb'
+Plugin 'yggdroot/indentline'
+Plugin 'christoomey/vim-tmux-navigator'
+
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -36,7 +37,6 @@ set title
 "custom tab space
 set tabstop=4 expandtab shiftwidth=4
 :set nu
-let g:ansible_options = {'documentation_mapping': '<C-K>'}
 "let g:auto_save = 1
 let g:auto_save_noupdatetime = 1
 let g:auto_save_in_insert_mode = 0
@@ -45,6 +45,12 @@ let g:auto_save_in_insert_mode = 0
 " let g:tick_fmt_command [default="tickfmt"]
  
 nnoremap <leader>a :set filetype=ansible<Enter>
+" Switch windows
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 "Switch tabs
 nnoremap tn :tabNext<Enter>
@@ -71,15 +77,14 @@ let g:airline_theme='alduin'
 "YouCompleteMe
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
-"vim theme
-colorscheme industry
+" vim theme
+" colorscheme industry
+colorscheme delek
 
 "NERDTreefind
 nnoremap ff :NERDTreeFind <Enter>
 "NERDTree toggle
 nnoremap <C-n> :NERDTreeToggle<CR>
-inoremap <S-Tab> <C-n>
-
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -99,7 +104,7 @@ let g:NERDTrimTrailingWhitespace = 1
 "fugitive vim
 nnoremap gw :Gwrite<Enter>
 nnoremap gs :Gstatus<Enter>
-nnoremap gc :Gcommit %<Enter>
+nnoremap gc :Gcommit<Enter>
 
 " Intent
 let g:indent_guides_enable_on_vim_startup = 1
