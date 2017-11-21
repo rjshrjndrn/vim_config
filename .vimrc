@@ -8,6 +8,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+Plugin 'valloric/youcompleteme'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'chase/vim-ansible-yaml'
@@ -19,7 +20,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nathanielc/vim-tickscript'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'yggdroot/indentline'
@@ -32,6 +32,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom changes
+" remapping leader
+:let mapleader = ','
 
 set title
 "custom tab space
@@ -59,6 +63,12 @@ nnoremap tc :tabnew<Enter>
 nnoremap bn :bn<Enter>
 nnoremap bp :bp<Enter>
 
+" Quit
+nnoremap <leader>w :w<Enter>
+nnoremap <leader>q :q<Enter>
+nnoremap <leader>wq :wq<Enter>
+nnoremap <leader>1q :q!<Enter>
+
 " Ctrl+a to select all
 nnoremap <C-a> <esc>ggVG<CR>
 
@@ -68,18 +78,19 @@ nnoremap <leader><leader> :set clipboard=unnamedplus<Enter>
 nnoremap <leader>] :set clipboard=unnamed<Enter>
 nnoremap <leader>p :set paste<Enter>
 nnoremap <leader>np :set nopaste<Enter>
-"custom file based remapings
-au FileType go nmap <leader>r <Plug>(go-run)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 "airline bar
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='alduin'
+" let g:airline_theme='base16_ashes'
 "YouCompleteMe
 let g:ycm_python_binary_path = '/usr/bin/python3'
-
+nnoremap <leader>gr :YcmCompleter GetDoc<Enter>
+nnoremap <leader>gd :YcmCompleter GoTo<Enter>
 " vim theme
 " colorscheme industry
-colorscheme delek
+" colorscheme murphy
 
 "NERDTreefind
 nnoremap ff :NERDTreeFind <Enter>
@@ -108,3 +119,7 @@ nnoremap gc :Gcommit<Enter>
 
 " Intent
 let g:indent_guides_enable_on_vim_startup = 1
+
+
+"custom file based remapings
+au FileType go nmap <leader>r :!go run %<Enter>
